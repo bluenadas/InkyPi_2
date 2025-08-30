@@ -19,6 +19,7 @@
     <select id="weatherProvider" name="weatherProvider" class="form-input" onchange="updateTitleOptions(this.value)">
         <option value="OpenWeatherMap">OpenWeatherMap</option>
         <option value="OpenMeteo">Open-Meteo</option>
+        <option value="Ecowitt">Open-Meteo</option>
     </select>
 
     <label for="units" class="form-label">Units:</label>
@@ -39,6 +40,14 @@
         <input type="radio" id="title-custom" name="titleSelection" value="custom">
         <label for="title-custom">Custom</label>
         <input type="text" id="customTitle" name="customTitle" class="form-input" placeholder="Type something..." />
+    </div>
+</div>
+
+<div class="form-group" id="titleEcowittWrapper">
+    <label class="form-label">Ecowitt Local IP:</label>
+
+    <div class="form-group">
+        <input type="text" id="ecowittIP" name="ecowittIP" class="form-input" placeholder="Insert local IP address only..." />
     </div>
 </div>
 
@@ -110,6 +119,7 @@
         const customTitleInput = document.getElementById('customTitle');
         const titleTimeZone = document.getElementById('weatherTimeZone');
         const titleTimeZoneLabel = document.querySelector('label[for="weatherTimeZone"]');
+        const titleEcowittIP = document.getElementById('ecowittIP')
 
         if (provider === 'OpenMeteo') {
             // Hide or disable "Location" radio option
@@ -125,19 +135,24 @@
             titleCustomRadio.disabled = false;
             customTitleInput.disabled = false;
         } else {
-            // Show and enable both options
-            titleLocationRadio.style.display = '';
-            titleLocationLabel.style.display = '';
-            titleLocationRadio.disabled = false;
+                // Show and enable both options
+                titleLocationRadio.style.display = '';
+                titleLocationLabel.style.display = '';
+                titleLocationRadio.disabled = false;
 
-            titleCustomRadio.disabled = false;
-            customTitleInput.disabled = false;
+                titleCustomRadio.disabled = false;
+                customTitleInput.disabled = false;
 
-            titleTimeZone.style.display = '';
-            titleTimeZoneLabel.style.display = '';
-            titleTimeZone.disabled = false;
+                titleTimeZone.style.display = '';
+                titleTimeZoneLabel.style.display = '';
+                titleTimeZone.disabled = false;
+                titleEcowittIP.disabled = true;
+
+                if (provider === 'Ecowitt'){
+                    titleEcowittIP.disabled = false;
+                }
+            }
         }
-    }
 
     document.addEventListener('DOMContentLoaded', () => {
 
@@ -210,6 +225,7 @@
             weatherProvider = pluginSettings.weatherProvider || 'OpenWeatherMap';
 
             document.getElementById('customTitle').value = pluginSettings.customTitle || '';
+            document.getElementById('ecowittIP').value = pluginSettings.ecowittIP || '';
         } else {
             // set default values
             document.getElementById('units').value = "imperial";
