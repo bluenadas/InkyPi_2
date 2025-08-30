@@ -146,9 +146,12 @@
                 titleTimeZone.style.display = '';
                 titleTimeZoneLabel.style.display = '';
                 titleTimeZone.disabled = false;
+                titleEcowittIP.style.display = 'none';
                 titleEcowittIP.disabled = true;
 
+
                 if (provider === 'Ecowitt'){
+                    titleEcowittIP.style.display = '';
                     titleEcowittIP.disabled = false;
                 }
             }
