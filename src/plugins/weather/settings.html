@@ -44,10 +44,10 @@
 </div>
 
 <div class="form-group" id="titleEcowittWrapper">
-    <label class="form-label">Ecowitt Local IP:</label>
+    <label class="form-label">Ecowitt Hostname:</label>
 
     <div class="form-group">
-        <input type="text" id="ecowittIP" name="ecowittIP" class="form-input" placeholder="Insert local IP address only..." />
+        <input type="text" id="ecowittHostName" name="ecowittHostName" class="form-input" placeholder="Insert local IP address only..." />
     </div>
 </div>
 
@@ -228,7 +228,7 @@
             weatherProvider = pluginSettings.weatherProvider || 'OpenWeatherMap';
 
             document.getElementById('customTitle').value = pluginSettings.customTitle || '';
-            document.getElementById('ecowittIP').value = pluginSettings.ecowittIP || '';
+            document.getElementById('ecowittHostName').value = pluginSettings.ecowittHostName || '';
         } else {
             // set default values
             document.getElementById('units').value = "imperial";
