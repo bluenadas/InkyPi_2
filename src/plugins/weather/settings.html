@@ -44,10 +44,10 @@
 </div>
 
 <div class="form-group" id="titleEcowittWrapper">
-    <label class="form-label">Ecowitt Hostname:</label>
+    <label class="form-label">Ecowitt IP:</label>
 
     <div class="form-group">
-        <input type="text" id="ecowittHostName" name="ecowittHostName" class="form-input" placeholder="Insert local IP address only..." />
+        <input type="text" id="ecowittIP" name="ecowittIP" class="form-input" placeholder="Insert Ecowitt Gateway IP address..." />
     </div>
 </div>
 
@@ -120,7 +120,7 @@
         const titleTimeZone = document.getElementById('weatherTimeZone');
         const titleTimeZoneLabel = document.querySelector('label[for="weatherTimeZone"]');
         const titleEcowittWrapper = document.getElementById('titleEcowittWrapper')
-        const ecowittHostname = document.getElementById('ecowittHostname')
+        const ecowittIP = document.getElementById('ecowittIP')
 
         if (provider === 'OpenMeteo') {
             // Hide or disable "Location" radio option
@@ -229,7 +229,7 @@
             weatherProvider = pluginSettings.weatherProvider || 'OpenWeatherMap';
 
             document.getElementById('customTitle').value = pluginSettings.customTitle || '';
-            document.getElementById('ecowittHostName').value = pluginSettings.ecowittHostName || '';
+            document.getElementById('ecowittIP').value = pluginSettings.ecowittIP || '';
         } else {
             // set default values
             document.getElementById('units').value = "imperial";
